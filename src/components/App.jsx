@@ -4,10 +4,10 @@ import ImageGallery from "./ImageGallery";
 import Button from "./Button";
 import Loader from "./Loader";
 import Modal from "./Modal";
+import fetchApi from "./fetchApi/fetchApi";
 
 import styles from './App.module.css';
 
-const KEY = '24700389-41a6c20aad42dc08b671c5623';
 
 function App(){
 
@@ -29,7 +29,7 @@ function App(){
     setLoading(true);
     setVisibleButton(false);
 
-    fetch(`https://pixabay.com/api/?q=${imageRequest}&page=${page}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=12`)
+    fetchApi(imageRequest, page)
       .then(response => {
         if (response.ok) {
           return response.json()
